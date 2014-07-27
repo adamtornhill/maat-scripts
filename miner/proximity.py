@@ -19,17 +19,6 @@ def record_change_to(file_name, change, acc):
     existing.append(change)
     acc[file_name]=existing
 
-def _recorded_changed_files_by_rev(all_proximities):
-    return [file_name for file_name, _ in all_proximities]
-
-def _files_with_number_of_revs(all_proximities):
-    """ To calculate statistics we need to keep track of 
-        the total number of recorded changes for each file.
-        We count a change as anything that happened in a revision.
-    """
-    files_by_rev = _recorded_changed_files_by_rev(all_proximities)
-    return collections.Counter(files_by_rev)
-
 class ProximityStats(object):
     def __init__(self, one_file, all_my_proximities):
         self.name = one_file
