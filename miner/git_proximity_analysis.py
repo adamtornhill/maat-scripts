@@ -2,17 +2,17 @@
 import sys, subprocess, re
 from collections import defaultdict
 import proximity
+import argparse
 
 ## Calculates the proximity between changes over a range of commits.
 ##
 ## Run the program as:
 ##
-##  python git_proximity_analysis.py 540e8de d804759
+##  python git_proximity_analysis.py --start 540e8de --end d804759
 ##
-## where the two arguments are the range of revisions of interest.
+## where the two arguments specify the range of revisions of interest.
 ## Note that you must run the program from within a git repo.
 ##
-## Expect a proper command line interface soon...
  
 ######################################################################
 ## Git interaction
@@ -107,10 +107,18 @@ def read_proximities_from(revision_range):
 		proximities.append(proximity.calc_proximity(changes))
 	return proximities
 
-if __name__ == "__main__":
-	revision_range = (sys.argv[1], sys.argv[2])
+def run(args):
+	revision_range = args.start, args.end #(sys.argv[1], sys.argv[2])
 	proximities = read_proximities_from(revision_range)
 	summed = proximity.sum_proximities(proximities)
 	presentation_order = proximity.sorted_on_proximity(summed)
 	as_csv(presentation_order)
+
+if __name__ == "__main__":
+	parser = argparse.ArgumentParser(description='Calculates proximity of changes recorded in the revision history.')
+	parser.add_argument('--start', required=True, help='The first commit hash to include')
+	parser.add_argument('--end', required=True, help='The last commit hash to include')
+	
+	args = parser.parse_args()
+	run(args)
  
