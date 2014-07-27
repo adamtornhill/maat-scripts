@@ -108,10 +108,10 @@ def read_proximities_from(revision_range):
 	return proximities
 
 def run(args):
-	revision_range = args.start, args.end #(sys.argv[1], sys.argv[2])
+	revision_range = args.start, args.end
 	proximities = read_proximities_from(revision_range)
-	summed = proximity.sum_proximities(proximities)
-	presentation_order = proximity.sorted_on_proximity(summed)
+	stats = proximity.sum_proximity_stats(proximities)
+	presentation_order = proximity.sorted_on_proximity(stats)
 	as_csv(presentation_order)
 
 if __name__ == "__main__":

@@ -53,7 +53,7 @@ def _group_by(one_file, proximity, all_grouped):
     existing.append(proximity)
     return existing
 
-def sum_proximities(all_proximities):
+def sum_proximity_stats(all_proximities):
     """ Received all proximities as a list of dictionaries.
         Each dictionary represents the proximities in the changed 
         in one revision.
