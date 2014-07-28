@@ -24,7 +24,7 @@ class ProximityStats(object):
         self.name = one_file
         self._all_my_proximities = all_my_proximities
         self.total = sum(all_my_proximities)
-        self.n_revs = len(all_my_proximities)
+        self.n_revs = len(all_my_proximities) + 1
 
     def mean(self):
         return self.total / float(self.n_revs)
