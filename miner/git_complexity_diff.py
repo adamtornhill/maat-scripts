@@ -4,34 +4,7 @@ from collections import defaultdict
 import argparse
 import git_interactions
 import desc_stats
-
-######################################################################
-## Complexity calcualations
-######################################################################
-
-leading_tabs_expr = re.compile(r'^(\t+)')
-leading_spaces_expr = re.compile(r'^( +)')
-
-def n_log_tabs(line):
-	pattern = re.compile(r' +')
-	wo_spaces = re.sub(pattern, '', line)
-	m = leading_tabs_expr.search(wo_spaces)
-	if m:
-		tabs = m.group()
-		return len(tabs)
-	return 0
-		
-def n_log_spaces(line):
-	pattern = re.compile(r'\t+')
-	wo_tabs = re.sub(pattern, '', line)
-	m = leading_spaces_expr.search(wo_tabs)
-	if m:
-		spaces = m.group()
-		return len(spaces)
-	return 0
-		
-def complexity_of(line):
-	return n_log_tabs(line) + (n_log_spaces(line) / 4) # hardcoded indentation
+import complexity_calculations
 	
 ######################################################################
 ## Statistics from complexity
@@ -63,7 +36,7 @@ def parse_complexity_changes_in(revision, git_diff):
 		return not marks_empty(line) and line[0] == '-'
 	# Extractors:
 	def complexity_from_modified(line):
-		return complexity_of(line[1:])
+		return ccomplexity_calculations.omplexity_of(line[1:])
 
 	for line in git_diff.split("\n"):
 		if marks_empty(line):
