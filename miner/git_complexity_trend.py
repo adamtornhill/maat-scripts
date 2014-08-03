@@ -4,7 +4,6 @@
 ######################################################################
 
 #!/bin/env python
-from collections import defaultdict
 import argparse
 import git_interactions
 import desc_stats
