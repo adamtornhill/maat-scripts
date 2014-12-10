@@ -15,7 +15,7 @@ class Merged(object):
 
 	def sorted_result(self):
 		# Sort on descending order:
-		ordered = sorted(self._merged.items(), key=lambda item: item[1][0], reverse=True)
+		ordered = sorted(self._merged.items(), key=lambda item: int(item[1][0]), reverse=True)
 		return ordered
 
 	def extend_with(self, name, freqs):
