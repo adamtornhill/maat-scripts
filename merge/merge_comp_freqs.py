@@ -56,12 +56,12 @@ def write_csv(stats):
 		print name + ',' + f + ',' + c
 	
 def parse_complexity(merged, row):
-	name = row[1][2:]
+	name = row[1][2:].replace("\\", "/")
 	complexity = row[4]
 	merged.record_detected(name, complexity)
 
 def parse_freqs(merged, row):
-	name = row[0]
+	name = row[0].replace("\\", "/")
 	freqs = row[1]
 	merged.extend_with(name, freqs)
 
