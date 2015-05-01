@@ -3,6 +3,7 @@
 
 import csv
 import sys
+import os
 
 class MergeError(Exception):
 	def __init__(self, message):
@@ -54,14 +55,17 @@ def write_csv(stats):
 	for s in stats:
 		name, (f,c) = s
 		print name + ',' + f + ',' + c
+
+def as_os_aware_path(name):
+	return os.path.normpath(name)
 	
 def parse_complexity(merged, row):
-	name = row[1][2:]
+	name = as_os_aware_path(row[1][2:])
 	complexity = row[4]
 	merged.record_detected(name, complexity)
 
 def parse_freqs(merged, row):
-	name = row[0]
+	name = as_os_aware_path(row[0])
 	freqs = row[1]
 	merged.extend_with(name, freqs)
 
