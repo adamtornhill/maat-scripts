@@ -60,7 +60,7 @@ def as_os_aware_path(name):
 	return os.path.normpath(name)
 	
 def parse_complexity(merged, row):
-	name = as_os_aware_path(row[1][2:])
+	name = as_os_aware_path(row[1])
 	complexity = row[4]
 	merged.record_detected(name, complexity)
 
