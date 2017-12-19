@@ -12,6 +12,7 @@ import argparse
 import csv
 import json
 import sys
+import os
 
 class MergeError(Exception):
 	def __init__(self, message):
@@ -86,7 +87,14 @@ class StructuralElement(object):
 		self.name = name
 		self.complexity = complexity
 	def parts(self):
-		return self.name.split('/')
+		res = [x for x in self.pathParts()]
+		res.reverse()
+		return res
+	def pathParts(self):
+		(hd, tl) = os.path.split(self.name)
+		while tl != '':
+			yield tl
+			(hd, tl) = os.path.split(hd)
 
 def parse_structural_element(csv_row):
 	name = csv_row[1][2:]
