@@ -97,7 +97,7 @@ class StructuralElement(object):
 			(hd, tl) = os.path.split(hd)
 
 def parse_structural_element(csv_row):
-	name = csv_row[1][2:]
+	name = csv_row[1]
 	complexity = csv_row[4]
 	return StructuralElement(name, complexity)
 
