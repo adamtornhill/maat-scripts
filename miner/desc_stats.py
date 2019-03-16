@@ -1,5 +1,6 @@
-## Basic mathematical statistics (yes, I know - NumPy would be better, 
-## but I want to make the scripts stand-alone for now).
+# Basic mathematical statistics (yes, I know - NumPy would be better,
+# but I want to make the scripts stand-alone for now).
+
 
 class DescriptiveStats(object):
     def __init__(self, name, all_values):
