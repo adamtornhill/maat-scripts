@@ -1,5 +1,3 @@
-import collections
-from operator import itemgetter
 import desc_stats
 
 # Functions for calculating proximity/distance

@@ -12,7 +12,7 @@
 import argparse
 import csv
 import json
-import sys
+from code_age_csv_as_enclosure_json import MergeError
 
 ######################################################################
 # Parse input

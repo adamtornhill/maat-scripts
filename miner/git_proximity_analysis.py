@@ -1,8 +1,5 @@
 #!/bin/env python
-import sys
-import subprocess
 import re
-from collections import defaultdict
 import proximity
 import argparse
 import git_interactions
