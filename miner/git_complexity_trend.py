@@ -1,9 +1,10 @@
+#!/usr/bin/env python3
+
 ######################################################################
 # This program calulcates the complexity trend over a range of
 # revisions in a Git repo.
 ######################################################################
 
-#!/bin/env python
 import argparse
 import git_interactions
 import desc_stats

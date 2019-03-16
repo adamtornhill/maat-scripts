@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python3
 
 #######################################################################
 # This program generates a JSON document suitable for a D3.js

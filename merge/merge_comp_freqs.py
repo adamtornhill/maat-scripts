@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Merges two CSV documents.
 ##
 
