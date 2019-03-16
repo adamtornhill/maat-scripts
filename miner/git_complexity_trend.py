@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 ######################################################################
-# This program calulcates the complexity trend over a range of
+# This program calculates the complexity trend over a range of
 # revisions in a Git repo.
 ######################################################################
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 ######################################################################
-# This program calulcates the whitespace complexity of a file.
+# This program calculates the whitespace complexity of a file.
 ######################################################################
 
 import argparse

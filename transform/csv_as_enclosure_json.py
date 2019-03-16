@@ -252,7 +252,7 @@ if __name__ == "__main__":
         '--weightcolumn',
         type=int,
         default=1,
-        help="The index specifying the columnt to use in the weight table")
+        help="The index specifying the column to use in the weight table")
     # TODO: add arguments to specify which CSV columns to use!
 
     args = parser.parse_args()

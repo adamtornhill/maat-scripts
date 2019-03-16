@@ -5,7 +5,7 @@
 # Hierarchical Edge Bundling visualization
 # (see https://gist.github.com/mbostock/7607999)
 ##
-# The input data is read from a Code Maat CSV file containg the result
+# The input data is read from a Code Maat CSV file containing the result
 # of a <communication> analysis.
 #######################################################################
 
