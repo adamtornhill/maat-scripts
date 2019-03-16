@@ -63,7 +63,7 @@ def delta_complexity_of(aggregated_stats):
 ######################################################################
 
 def as_csv(result):
-    print 'rev,growth,nadded,addedtotal,addedmean,sd,nremoved,removedtotal,removedmean'
+    print('rev,growth,nadded,addedtotal,addedmean,sd,nremoved,removedtotal,removedmean')
     for rev, stats in result:
     	added = stats.added
     	removed = stats.removed
@@ -71,7 +71,7 @@ def as_csv(result):
     	fields_of_interest = [rev, growth, added.n_revs, added.total, round(added.mean(),2), round(added.sd(),2), 
     					      removed.n_revs, removed.total, round(removed.mean(), 2)]
     	printable = [str(field) for field in fields_of_interest]
-    	print ','.join(printable)
+    	print(','.join(printable))
 
 ######################################################################
 ## Main

@@ -19,10 +19,10 @@ def as_stats(revision, complexity_by_line):
 ######################################################################
 
 def as_csv(stats):
-	print 'n,total,mean,sd,max'
+	print('n,total,mean,sd,max')
 	fields_of_interest = [stats.n_revs, stats.total, round(stats.mean(),2), round(stats.sd(),2), stats.max_value()]
 	printable = [str(field) for field in fields_of_interest]
-	print ','.join(printable)
+	print(','.join(printable))
 
 ######################################################################
 ## Main

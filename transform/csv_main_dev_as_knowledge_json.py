@@ -31,9 +31,9 @@ def validate_content_by(heading, expected):
 
 def parse_csv(filename, parse_action, expected_format=None):
 	def read_heading_from(r):
-		p = r.next()
+		p = next(r)
 		while p == []:
-			p = r.next()
+			p = next(r)
 		return p
 	with open(filename, 'rb') as csvfile:
 		r = csv.reader(csvfile, delimiter=',')
@@ -152,7 +152,7 @@ def generate_structure_from(modules, knowledge):
 ######################################################################
 
 def write_json(result):
-	print json.dumps(result)
+	print(json.dumps(result))
 
 ######################################################################
 ## Main

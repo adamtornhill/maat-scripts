@@ -27,9 +27,9 @@ def validate_content_by(heading, expected):
 
 def parse_csv(filename, parse_action, expected_format=None):
 	def read_heading_from(r):
-		p = r.next()
+		p = next(r)
 		while p == []:
-			p = r.next()
+			p = next(r)
 		return p
 	with open(filename, 'rb') as csvfile:
 		r = csv.reader(csvfile, delimiter=',')
@@ -69,7 +69,7 @@ def aggregate_links_per_author_in(peer_links):
 ######################################################################
 
 def write_json(result):
-	print json.dumps(result)
+	print(json.dumps(result))
 
 ######################################################################
 ## Main
@@ -80,7 +80,7 @@ def run(args):
 							expected_format='author,peer,shared,average,strength',
 							parse_action=parse_peers)
 	links_by_author = aggregate_links_per_author_in(peer_links)
-	write_json(links_by_author.values())
+	write_json(list(links_by_author.values()))
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Generates a JSON document suitable for communication diagrams.')

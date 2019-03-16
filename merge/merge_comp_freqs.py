@@ -16,7 +16,7 @@ class Merged(object):
 
 	def sorted_result(self):
 		# Sort on descending order:
-		ordered = sorted(self._merged.items(), key=lambda item: int(item[1][0]), reverse=True)
+		ordered = sorted(list(self._merged.items()), key=lambda item: int(item[1][0]), reverse=True)
 		return ordered
 
 	def extend_with(self, name, freqs):
@@ -31,9 +31,9 @@ def skip_heading(f):
 	next(f)
 	
 def read_heading_from(r):
-	p = r.next()
+	p = next(r)
 	while p == []:
-		p = r.next()
+		p = next(r)
 	return p
 
 def validate_content_by(heading, expected):
@@ -51,10 +51,10 @@ def parse_csv(merged, filename, parse_action, expected_format):
 			parse_action(merged, row)
 
 def write_csv(stats):
-	print 'module,revisions,code'
+	print('module,revisions,code')
 	for s in stats:
 		name, (f,c) = s
-		print name + ',' + f + ',' + c
+		print(name + ',' + f + ',' + c)
 
 def as_os_aware_path(name):
 	return os.path.normpath(name)
