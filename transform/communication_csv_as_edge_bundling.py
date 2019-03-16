@@ -61,7 +61,7 @@ def parse_peers(csv_row):
 
 
 def link_to(existing_authors, new_link):
-    if not new_link.author in existing_authors:
+    if new_link.author not in existing_authors:
         return {'name': new_link.author,
                 'size': new_link.strength, 'imports': [new_link.peer]}
     existing_author = existing_authors[new_link.author]
