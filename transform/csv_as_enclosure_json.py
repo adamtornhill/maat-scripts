@@ -216,7 +216,8 @@ def write_json(result):
 # Main
 ######################################################################
 
-# TODO: turn it around: parse the weights first and add them to individual elements
+# TODO: turn it around: parse the weights first and add them to individual
+# elements
 # as the raw structure list is built!
 
 
@@ -227,8 +228,9 @@ def run(args):
             args.weightcolumn))
     weight_calculator = module_weight_calculator_from(raw_weights)
 
+    fmt = 'language,filename,blank,comment,code'
     structure_input = parse_csv(args.structure,
-                                expected_format='language,filename,blank,comment,code',
+                                expected_format=fmt,
                                 parse_action=parse_structural_element)
     weighted_system_structure = generate_structure_from(
         structure_input, weight_calculator)
@@ -236,8 +238,9 @@ def run(args):
 
 
 if __name__ == "__main__":
+    desc = 'Generates a JSON document suitable for enclosure diagrams.'
     parser = argparse.ArgumentParser(
-        description='Generates a JSON document suitable for enclosure diagrams.')
+        description=desc)
     parser.add_argument(
         '--structure',
         required=True,

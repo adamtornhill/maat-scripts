@@ -2,7 +2,8 @@
 
 #######################################################################
 # This program generates a JSON document suitable for a D3.js
-# Hierarchical Edge Bundling visualization (see https://gist.github.com/mbostock/7607999)
+# Hierarchical Edge Bundling visualization
+# (see https://gist.github.com/mbostock/7607999)
 ##
 # The input data is read from a Code Maat CSV file containg the result
 # of a <communication> analysis.
@@ -89,16 +90,18 @@ def write_json(result):
 
 
 def run(args):
+    fmt = 'author,peer,shared,average,strength'
     peer_links = parse_csv(args.communication,
-                           expected_format='author,peer,shared,average,strength',
+                           expected_format=fmt,
                            parse_action=parse_peers)
     links_by_author = aggregate_links_per_author_in(peer_links)
     write_json(list(links_by_author.values()))
 
 
 if __name__ == "__main__":
+    desc = 'Generates a JSON document suitable for communication diagrams.'
     parser = argparse.ArgumentParser(
-        description='Generates a JSON document suitable for communication diagrams.')
+        description=desc)
     parser.add_argument(
         '--communication',
         required=True,

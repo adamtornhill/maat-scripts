@@ -97,8 +97,9 @@ def merge(revs_file, comp_file):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        raise MergeError(
-            'Wrong arguments. Require one CSV file with frequencies and one with the complexity')
+        msg = ('Wrong arguments. Require one CSV file with frequencies and one'
+               ' with the complexity')
+        raise MergeError(msg)
     revs_file = sys.argv[1]
     comp_file = sys.argv[2]
     merge(revs_file, comp_file)

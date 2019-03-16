@@ -183,11 +183,13 @@ def run(args):
     authors_colors = dict(parse_csv(args.authors,
                                     expected_format='author,color',
                                     parse_action=parse_author_color))
+    fmt_mod = 'entity,main-dev,added,total-added,ownership'
     module_ownership = parse_csv(args.owners,
-                                 expected_format='entity,main-dev,added,total-added,ownership',
+                                 expected_format=fmt_mod,
                                  parse_action=parse_ownership)
+    fmt_struct = 'language,filename,blank,comment,code'
     structure_input = parse_csv(args.structure,
-                                expected_format='language,filename,blank,comment,code',
+                                expected_format=fmt_struct,
                                 parse_action=parse_structural_element)
     knowledge = Knowledge(authors_colors, module_ownership)
     knowledge_structure = generate_structure_from(structure_input, knowledge)
@@ -195,8 +197,9 @@ def run(args):
 
 
 if __name__ == "__main__":
+    desc = 'Generates a JSON document suitable for knowledge diagrams.'
     parser = argparse.ArgumentParser(
-        description='Generates a JSON document suitable for knowledge diagrams.')
+        description=desc)
     parser.add_argument(
         '--structure',
         required=True,
