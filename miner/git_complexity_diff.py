@@ -72,13 +72,17 @@ def delta_complexity_of(aggregated_stats):
 
 
 def as_csv(result):
-    print('rev,growth,nadded,addedtotal,addedmean,sd,nremoved,removedtotal,removedmean')
+    header = ('rev,growth,nadded,addedtotal,addedmean,sd,nremoved,'
+              'removedtotal,removedmean')
+    print(header)
     for rev, stats in result:
         added = stats.added
         removed = stats.removed
         growth = delta_complexity_of(stats)
-        fields_of_interest = [rev, growth, added.n_revs, added.total, round(added.mean(), 2), round(added.sd(), 2),
-                              removed.n_revs, removed.total, round(removed.mean(), 2)]
+        fields_of_interest = [rev, growth, added.n_revs, added.total,
+                              round(added.mean(), 2), round(added.sd(), 2),
+                              removed.n_revs, removed.total,
+                              round(removed.mean(), 2)]
         printable = [str(field) for field in fields_of_interest]
         print(','.join(printable))
 
@@ -110,8 +114,9 @@ def run(args):
 
 
 if __name__ == "__main__":
+    desc = 'Calculates whitespace complexity trends over a range of revisions.'
     parser = argparse.ArgumentParser(
-        description='Calculates whitespace complexity trends over a range of revisions.')
+        description=desc)
     parser.add_argument(
         '--start',
         required=True,

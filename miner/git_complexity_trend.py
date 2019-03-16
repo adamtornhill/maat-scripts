@@ -59,8 +59,9 @@ def run(args):
 
 
 if __name__ == "__main__":
+    desc = 'Calculates whitespace complexity trends over a range of revisions.'
     parser = argparse.ArgumentParser(
-        description='Calculates whitespace complexity trends over a range of revisions.')
+        description=desc)
     parser.add_argument(
         '--start',
         required=True,

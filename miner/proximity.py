@@ -24,8 +24,8 @@ def record_change_to(file_name, change, acc):
 
 
 def _as_stats(all_proximities):
-    return [desc_stats.DescriptiveStats(
-        name, proximities_for_one) for name, proximities_for_one in all_proximities.items()]
+    return [desc_stats.DescriptiveStats(name, proximities_for_one)
+            for name, proximities_for_one in all_proximities.items()]
 
 
 def _group_by(one_file, proximity, all_grouped):

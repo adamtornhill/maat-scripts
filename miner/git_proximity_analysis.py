@@ -117,8 +117,9 @@ def run(args):
 
 
 if __name__ == "__main__":
+    desc = 'Calculates proximity of changes recorded in the revision history.'
     parser = argparse.ArgumentParser(
-        description='Calculates proximity of changes recorded in the revision history.')
+        description=desc)
     parser.add_argument(
         '--start',
         required=True,
