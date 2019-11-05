@@ -1,5 +1,5 @@
 ######################################################################
-## This program calulcates the whitespace complexity of a file.
+## This program calculates the whitespace complexity of a file.
 ######################################################################
 
 #!/bin/env python

@@ -1,7 +1,7 @@
 import re
 
 ######################################################################
-## Complexity calcualations
+## Complexity calculations
 ######################################################################
 
 leading_tabs_expr = re.compile(r'^(\t+)')
