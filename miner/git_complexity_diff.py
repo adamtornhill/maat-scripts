@@ -36,7 +36,7 @@ def parse_complexity_changes_in(revision, git_diff):
 		return not marks_empty(line) and line[0] == '-'
 	# Extractors:
 	def complexity_from_modified(line):
-		return ccomplexity_calculations.omplexity_of(line[1:])
+		return complexity_calculations.complexity_of(line[1:])
 
 	for line in git_diff.split("\n"):
 		if marks_empty(line):

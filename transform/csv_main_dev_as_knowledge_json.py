@@ -4,9 +4,9 @@
 ## This program generates a JSON document suitable for a D3.js 
 ## enclosure diagram visualization.
 ## The input data is read from three CSV files:
-##  1) A cloc output file specyfing the static structure of the system.
-##  2) A file containg Code Maat main developer results.
-##  3) A file specyfing the color to use for a certain author. If that 
+##  1) A cloc output file specifying the static structure of the system.
+##  2) A file containing Code Maat main developer results.
+##  3) A file specifying the color to use for a certain author. If that 
 ##     information is absent, this script will treat that code as a 
 ##     dead spot.
 ##     This CSV file must have two columns: author, color
