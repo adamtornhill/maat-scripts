@@ -169,6 +169,8 @@ def generate_structure_from(modules, weight_calculator):
 	hierarchy = []
 	for module in modules:
 		parts = module.parts()
+		if len(parts) == 0:
+			continue
 		_insert_parts_into(hierarchy, module, weight_calculator, parts)
 
 	structure = {'name':'root', 'children':hierarchy}
