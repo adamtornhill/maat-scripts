@@ -3,13 +3,13 @@ import merge_comp_freqs
 
 
 class MergeCompFreqsTest(unittest.TestCase):
-    FAKED_COMLEXITY_METRIC = 42
+    FAKED_COMPLEXITY_METRIC = 42
     FAKED_MODULE = 'some/file/here.py'
     FAKED_FREQS_METRIC = 26
 
     def setUp(self):
         self._merger = merge_comp_freqs.Merged()
-        self._simulate_existing(self.FAKED_MODULE, self.FAKED_COMLEXITY_METRIC)
+        self._simulate_existing(self.FAKED_MODULE, self.FAKED_COMPLEXITY_METRIC)
 
     def test_starts_empty(self):
         m = merge_comp_freqs.Merged()
@@ -21,7 +21,7 @@ class MergeCompFreqsTest(unittest.TestCase):
         updated = self._merger.sorted_result()
         self.assertEqual(updated, [(self.FAKED_MODULE,
                                    (self.FAKED_FREQS_METRIC,
-                                    self.FAKED_COMLEXITY_METRIC))])
+                                    self.FAKED_COMPLEXITY_METRIC))])
 
     def test_ignores_non_existent_change_records(self):
         """ Since we're using historic data, some modules may no longer exist.
@@ -45,7 +45,7 @@ class MergeCompFreqsTest(unittest.TestCase):
         updated = self._merger.sorted_result()
         self.assertEqual(updated, [(self.FAKED_MODULE,
                                    (self.FAKED_FREQS_METRIC,
-                                    self.FAKED_COMLEXITY_METRIC)),
+                                    self.FAKED_COMPLEXITY_METRIC)),
                                    (a_new_module, (freqs_of_new_module,
                                     complexity_of_new_module))])
 
