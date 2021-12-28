@@ -101,7 +101,10 @@ def parse_csv(filename, parse_action, expected_format=None):
 
 class StructuralElement(object):
     def __init__(self, name, complexity):
-        self.name = name
+        if name.startswith('./'):
+            self.name = name[2:]
+        else:
+            self.name = name
         self.complexity = complexity
 
     def parts(self):
