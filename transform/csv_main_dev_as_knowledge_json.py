@@ -41,7 +41,7 @@ def parse_csv(filename, parse_action, expected_format=None):
         while p == []:
             p = next(r)
         return p
-    with open(filename, 'rb') as csvfile:
+    with open(filename, 'rt') as csvfile:
         r = csv.reader(csvfile, delimiter=',')
         heading = read_heading_from(r)
         validate_content_by(heading, expected_format)
