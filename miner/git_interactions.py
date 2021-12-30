@@ -8,8 +8,9 @@ def _as_rev_range(start, end):
 
 
 def _run_git_cmd(git_arguments):
-    return subprocess.Popen(
-        git_arguments, stdout=subprocess.PIPE).communicate()[0]
+    stdout_bytes = subprocess.Popen(git_arguments, stdout=subprocess.PIPE).communicate()[0]
+    stdout = stdout_bytes.decode(sys.stdout.encoding)
+    return stdout
 
 
 def _read_revisions_matching(git_arguments):
@@ -18,9 +19,7 @@ def _read_revisions_matching(git_arguments):
     # match a line like: d804759 Documented tree map visualizations
     # ignore everything except the commit number:
     rev_expr = re.compile(r'([^\s]+)')
-    encoding = sys.stdout.encoding
-    for line_bytes in git_log.split("\n".encode(encoding)):
-        line = line_bytes.decode(encoding)
+    for line in git_log.split("\n"):
         m = rev_expr.search(line)
         if m:
             revs.append(m.group(1))
