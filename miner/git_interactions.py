@@ -1,4 +1,5 @@
 import subprocess
+import sys
 import re
 
 
@@ -17,7 +18,9 @@ def _read_revisions_matching(git_arguments):
     # match a line like: d804759 Documented tree map visualizations
     # ignore everything except the commit number:
     rev_expr = re.compile(r'([^\s]+)')
-    for line in git_log.split("\n"):
+    encoding = sys.stdout.encoding
+    for line_bytes in git_log.split("\n".encode(encoding)):
+        line = line_bytes.decode(encoding)
         m = rev_expr.search(line)
         if m:
             revs.append(m.group(1))
