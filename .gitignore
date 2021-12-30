@@ -52,3 +52,8 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Visual Studio Code IDE settings
+.vscode/
+
+# PyCharm IDE settings
+.idea/
