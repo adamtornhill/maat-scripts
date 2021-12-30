@@ -8,8 +8,12 @@ def _as_rev_range(start, end):
 
 
 def _run_git_cmd(git_arguments):
+    encoding = 'UTF-8'
+    if sys.stdout.encoding is not None:
+        encoding = sys.stdout.encoding
+
     stdout_bytes = subprocess.Popen(git_arguments, stdout=subprocess.PIPE).communicate()[0]
-    stdout = stdout_bytes.decode(sys.stdout.encoding)
+    stdout = stdout_bytes.decode(encoding)
     return stdout
 
 
