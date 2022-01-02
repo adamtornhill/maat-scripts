@@ -9,6 +9,7 @@ import argparse
 import git_interactions
 import desc_stats
 import complexity_calculations
+import language_preprocessors
 
 ######################################################################
 # Statistics from complexity
@@ -39,6 +40,7 @@ def as_csv(result):
 
 
 def calculate_complexity_over_range(file_name, revision_range):
+    preprocessor = language_preprocessors.create_for(file_name)
     start_rev, end_rev = revision_range
     revs = git_interactions.read_revs_for(file_name, start_rev, end_rev)
     complexity_by_rev = []
@@ -46,7 +48,7 @@ def calculate_complexity_over_range(file_name, revision_range):
         historic_version = git_interactions.read_version_matching(
             file_name, rev)
         complexity_by_line = complexity_calculations.calculate_complexity_in(
-            historic_version)
+            historic_version, preprocessor)
         complexity_by_rev.append(as_stats(rev, complexity_by_line))
     return complexity_by_rev
 
