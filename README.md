@@ -1,7 +1,7 @@
 maat-scripts
 ============
 
-[![Build Status Badge](https://github.com/wonderbird/maat-scripts/actions/workflows/python-app.yml/badge.svg?branch=python3)](https://github.com/wonderbird/maat-scripts/actions/workflows/python-app.yml)
+[![Build Status Badge](https://github.com/adamtornhill/maat-scripts/actions/workflows/python-app.yml/badge.svg?branch=python3)](https://github.com/wonderbird/maat-scripts/actions/workflows/python-app.yml)
 
 Scripts used to post-process the results from Code Maat.
 
