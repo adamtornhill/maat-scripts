@@ -29,8 +29,5 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Test with unittest
-      run: |
-        cd merge && python -m unittest discover -s . -p '*_test.py'
-        cd ../miner && python -m unittest discover -s . -p '*_test.py'
-        cd ../plot && python -m unittest discover -s . -p '*_test.py'
-        cd ../transform && python -m unittest discover -s . -p '*_test.py'
+      run:
+        ./test.sh

@@ -3,19 +3,19 @@ import re
 
 
 class LanguagePreprocessor:
-    def parse(self, source) -> str:
+    def process(self, source) -> str:
         pass
 
 
 class PassThrough(LanguagePreprocessor):
-    def parse(self, source) -> str:
+    def process(self, source) -> str:
         return source
 
 
 class RemoveLeadingHashCharactersFromXpo(LanguagePreprocessor):
     regex = re.compile(r'^(\s*)#', re.MULTILINE)
 
-    def parse(self, source) -> str:
+    def process(self, source) -> str:
         return re.sub(self.regex, '\\1', source)
 
 
