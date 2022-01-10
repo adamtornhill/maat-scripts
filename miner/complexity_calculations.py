@@ -41,6 +41,7 @@ def complexity_of(line):
 ######################################################################
 
 
-def calculate_complexity_in(source):
+def calculate_complexity_in(source, preprocessor):
+    preprocessed_source = preprocessor.process(source)
     return [complexity_of(line)
-            for line in source.split("\n") if contains_code(line)]
+            for line in preprocessed_source.split("\n") if contains_code(line)]

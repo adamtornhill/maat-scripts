@@ -7,6 +7,7 @@
 import argparse
 import desc_stats
 import complexity_calculations
+import language_preprocessors
 
 ######################################################################
 # Statistics from complexity
@@ -37,8 +38,9 @@ def as_csv(stats):
 
 def run(args):
     with open(args.file, "r") as file_to_calc:
+        preprocessor = language_preprocessors.create_for(args.file)
         complexity_by_line = complexity_calculations.calculate_complexity_in(
-            file_to_calc.read())
+            file_to_calc.read(), preprocessor)
         stats = desc_stats.DescriptiveStats(args.file, complexity_by_line)
         as_csv(stats)
 
