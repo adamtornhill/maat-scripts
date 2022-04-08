@@ -39,17 +39,18 @@ class TestCase:
 class CombineReposTest(unittest.TestCase):
     def test_suite(self):
         suite = [
-            TestCase(self, "combined git history should be equivalent to concatenated content",
+            TestCase(self, "1 commit per file => simply concatenate the files",
                      "test-data/concatenate/first_evo.log", "test-data/concatenate/second_evo.log",
                      "test-data/concatenate/combined_evo.log"),
-            TestCase(self, "combined git history should be sorted by date descending",
+            TestCase(self, "multiple commits per file => result is sorted by date descending",
                      "test-data/sort/first_evo.log", "test-data/sort/second_evo.log",
                      "test-data/sort/combined_evo.log")
         ]
 
         for case in suite:
-            with self.subTest(desc=case.description):
+            with self.subTest(case.description):
                 case.run()
+
 
 if __name__ == '__main__':
     unittest.main()
