@@ -60,4 +60,4 @@ docs/_build/
 .idea/
 
 # Include test data
-!combine-repos/test-data/*.log
+!combine-repos/test-data/**/*.log

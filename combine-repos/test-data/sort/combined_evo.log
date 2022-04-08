@@ -1,0 +1,14 @@
+[1595116] Adam Petersen 2014-07-28 Adjust number of revisions
+1	1	miner/proximity.py
+
+[6134e43] Adam Petersen 2014-07-27 Proximity simplified by use of counters
+16	7	miner/proximity.py
+
+[78c4881] Adam Petersen 2014-06-28 Prototype for proximity analysis (git)
+114	0	miner/git_proximity_analysis.py
+32	0	miner/proximity.py
+
+[5062643] Adam Petersen Tornhill 2014-06-13 Initial commit
+54	0	.gitignore
+674	0	LICENSE
+4	0	README.md
