@@ -58,3 +58,6 @@ docs/_build/
 
 # PyCharm IDE settings
 .idea/
+
+# Include test data
+!combine-repos/test-data/*.log
