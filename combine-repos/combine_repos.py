@@ -3,7 +3,20 @@ import argparse
 
 
 def run(args):
-    pass
+    first = read_file(args.first)
+    second = read_file(args.second)
+
+    second.append('')
+    combined = second + first
+
+    for line in combined:
+        print(line)
+
+
+def read_file(path):
+    with open(path, 'rt') as f:
+        contents = f.read().splitlines()
+    return contents
 
 
 def create_argument_parser():

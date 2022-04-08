@@ -6,8 +6,8 @@ import combine_repos
 
 
 class CombineReposTest(unittest.TestCase):
-    def test_should_work_in_progress(self):
-        # build up an integration test step by step
+    def test_combine_and_sort_git_history_files(self):
+        # SCENARIO Combine and sort the git history of two repositories by commit date descending.
         parser = combine_repos.create_argument_parser()
 
         # GIVEN I have two git history files
