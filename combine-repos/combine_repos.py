@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 import argparse
-
+from commit_history_file import CommitHistoryFile
 
 def run(args):
-    first = read_file(args.first)
-    second = read_file(args.second)
+    # first_commits = CommitHistoryFile(args.first).read()
+    # second_commits = CommitHistoryFile(args.second).read()
+    # all_commits = first_commits + second_commits
+    # all_commits.sort
+    # for commit in all_commits:
+    #   print(CommitPrinter(commit).print())
 
-    second.append('')
-    combined = second + first
+    first_commits = CommitHistoryFile(args.first).read()
+    second_commits = CommitHistoryFile(args.second).read()
 
-    for line in combined:
+    second_commits.append('')
+    all_commits = second_commits + first_commits
+
+    for line in all_commits:
         print(line)
-
-
-def read_file(path):
-    with open(path, 'rt') as f:
-        contents = f.read().splitlines()
-    return contents
 
 
 def create_argument_parser():
