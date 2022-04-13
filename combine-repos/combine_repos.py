@@ -11,8 +11,8 @@ def run(args):
     # for commit in all_commits:
     #   print(CommitPrinter(commit).format())
 
-    first_commits = CommitHistoryFile(args.first).read()
-    second_commits = CommitHistoryFile(args.second).read()
+    first_commits = CommitHistoryFile().read(args.first)
+    second_commits = CommitHistoryFile().read(args.second)
 
     second_commits.append('')
     all_commits = second_commits + first_commits
