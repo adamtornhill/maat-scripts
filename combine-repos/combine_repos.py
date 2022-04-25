@@ -2,6 +2,17 @@
 import argparse
 from commit_history_file import CommitHistoryFile
 
+# TODO test boundary cases
+# - empty commits array
+# - single commit
+# - two commits
+def print_commits(commits):
+    for commit in commits[:-1]:
+        print(str(commit))
+        print()
+    print(str(commits[-1]))
+
+
 def run(args):
     # first_commits = CommitHistoryFile(args.first).read()
     # second_commits = CommitHistoryFile(args.second).read()
@@ -9,15 +20,12 @@ def run(args):
     # all_commits.sort
     # for commit in all_commits:
     #   print(CommitPrinter(commit).format())
-    first_c = CommitHistoryFile().read(args.first)
-    second_c = CommitHistoryFile().read(args.second)
+    first_commits = CommitHistoryFile().read(args.first)
+    second_commits = CommitHistoryFile().read(args.second)
 
-    all_c = second_c + first_c
+    all_commits = second_commits + first_commits
 
-    for commit in all_c[:-1]:
-        print(str(commit))
-        print()
-    print(str(all_c[-1]))
+    print_commits(all_commits)
 
 
 def create_argument_parser():
@@ -34,3 +42,5 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     run(args)
+
+
