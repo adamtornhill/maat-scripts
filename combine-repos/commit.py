@@ -39,3 +39,6 @@ class Commit:
             representation += '"{0}" '.format(change_line)
         representation += ']'
         return representation
+
+    def __str__(self) -> str:
+        return self.first_line + '\n' + '\n'.join(self.change_lines)

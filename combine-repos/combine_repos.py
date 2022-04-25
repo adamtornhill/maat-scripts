@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import argparse
 from commit_history_file import CommitHistoryFile
-from commit_formatter import CommitFormatter
 
 def run(args):
     # first_commits = CommitHistoryFile(args.first).read()
@@ -11,15 +10,20 @@ def run(args):
     # for commit in all_commits:
     #   print(CommitPrinter(commit).format())
 
-    first_commits = CommitHistoryFile().read(args.first)
-    second_commits = CommitHistoryFile().read(args.second)
+    with open(args.first) as f:
+        contents = f.read()
+    first_c = CommitHistoryFile().parse(contents)
 
-    second_commits.append('')
-    all_commits = second_commits + first_commits
+    with open(args.second) as f:
+        contents = f.read()
+    second_c = CommitHistoryFile().parse(contents)
 
-    formatter = CommitFormatter()
-    for commit in all_commits:
-        print(formatter.format(commit))
+    all_c = second_c + first_c
+
+    for commit in all_c[:-1]:
+        print(str(commit))
+        print()
+    print(str(all_c[-1]))
 
 
 def create_argument_parser():
