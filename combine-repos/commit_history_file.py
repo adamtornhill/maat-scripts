@@ -15,9 +15,9 @@ class CommitHistoryFile:
         return commits
 
     def read(self, path):
-        with open(path, 'rt') as f:
-            contents = f.read().splitlines()
-        return contents
+        with open(path) as f:
+            contents = f.read()
+        return self.parse(contents)
 
     def __group_lines_by_commit(self, lines):
         """Group lines into "commit_groups" which are not separated by a blank line.

@@ -9,14 +9,8 @@ def run(args):
     # all_commits.sort
     # for commit in all_commits:
     #   print(CommitPrinter(commit).format())
-
-    with open(args.first) as f:
-        contents = f.read()
-    first_c = CommitHistoryFile().parse(contents)
-
-    with open(args.second) as f:
-        contents = f.read()
-    second_c = CommitHistoryFile().parse(contents)
+    first_c = CommitHistoryFile().read(args.first)
+    second_c = CommitHistoryFile().read(args.second)
 
     all_c = second_c + first_c
 
