@@ -4,7 +4,7 @@ import unittest
 
 from commit import Commit
 from commit_history_report import CommitHistoryReport
-
+from capture_stdout_to_list import CaptureStdoutToList
 
 class CommitHistoryReportTest(unittest.TestCase):
     def test_given_empty_commit_list_when_print_then_output_is_empty(self):
@@ -13,7 +13,8 @@ class CommitHistoryReportTest(unittest.TestCase):
 
         # WHEN printing the commit history
         buffer = io.StringIO()
-        with contextlib.redirect_stdout(buffer):
+        actual = []
+        with CaptureStdoutToList(buffer, actual):
             sut = CommitHistoryReport()
             sut.print(commits)
         actual = buffer.getvalue().split('\n')
@@ -32,7 +33,8 @@ class CommitHistoryReportTest(unittest.TestCase):
 
         # WHEN printing the commit history
         buffer = io.StringIO()
-        with contextlib.redirect_stdout(buffer):
+        actual = []
+        with CaptureStdoutToList(buffer, actual):
             sut = CommitHistoryReport()
             sut.print(commits)
         actual = buffer.getvalue().split('\n')
