@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import argparse
-from commit_history_file import CommitHistoryFile
+from commit_history_reader import CommitHistoryReader
 from commit_history_report import CommitHistoryReport
 
 
@@ -11,8 +11,8 @@ def run(args):
     # all_commits.sort
     # for commit in all_commits:
     #   print(CommitPrinter(commit).format())
-    first_commits = CommitHistoryFile().read(args.first)
-    second_commits = CommitHistoryFile().read(args.second)
+    first_commits = CommitHistoryReader().read(args.first)
+    second_commits = CommitHistoryReader().read(args.second)
 
     all_commits = second_commits + first_commits
 

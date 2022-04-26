@@ -1,18 +1,18 @@
 import unittest
-from commit_history_file import CommitHistoryFile
+from commit_history_reader import CommitHistoryReader
 from commit import Commit
 
 
-class CommitHistoryFileTest(unittest.TestCase):
+class CommitHistoryReaderTest(unittest.TestCase):
     def test_given_empty_file_when_parse_then_return_no_commit(self):
         file_contents = ''
-        commits = CommitHistoryFile().parse(file_contents)
+        commits = CommitHistoryReader().parse(file_contents)
         self.assertEqual(len(commits), 0)
 
     def test_given_one_commit_in_file_when_parse_then_return_single_commit(self):
         contents = '[1234567] Commit Message\n' \
                    '1\t2\tfilename'
-        commits = CommitHistoryFile().parse(contents)
+        commits = CommitHistoryReader().parse(contents)
 
         expected = Commit()
         expected.first_line = '[1234567] Commit Message'
@@ -26,7 +26,7 @@ class CommitHistoryFileTest(unittest.TestCase):
                    '\n' \
                    '[1234567] Second Commit Message\n' \
                    '3\t4\tsecond\n'
-        commits = CommitHistoryFile().parse(contents)
+        commits = CommitHistoryReader().parse(contents)
 
         expected = [Commit()]
         expected[0].first_line = '[1234567] First Commit Message'

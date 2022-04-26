@@ -1,7 +1,7 @@
 from commit import Commit
 
 
-class CommitHistoryFile:
+class CommitHistoryReader:
     def parse(self, contents):
         if contents == '':
             return []
