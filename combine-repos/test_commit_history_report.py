@@ -7,10 +7,6 @@ from commit_history_report import CommitHistoryReport
 
 
 class CommitHistoryReportTest(unittest.TestCase):
-    def __init__(self, method_name: str = ...) -> None:
-        super().__init__(method_name)
-        self.printed = []
-
     def test_given_two_commits_when_print_then_returned_output_is_separated_by_blank_line(self):
         # GIVEN two commits
         commit = self.create_commit()
@@ -36,9 +32,6 @@ class CommitHistoryReportTest(unittest.TestCase):
         expected += commit.change_lines
 
         self.assertEqual(actual, expected)
-
-    def print_replacement(self, string=''):
-        self.printed.append(string)
 
     @staticmethod
     def create_commit():
