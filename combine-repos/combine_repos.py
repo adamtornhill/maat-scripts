@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from commit_history_file import CommitHistoryFile
-from commit_list_printer import CommitListPrinter
+from commit_history_report import CommitHistoryReport
 
 
 def run(args):
@@ -16,7 +16,7 @@ def run(args):
 
     all_commits = second_commits + first_commits
 
-    CommitListPrinter().print(all_commits)
+    CommitHistoryReport().print(all_commits)
 
 
 def create_argument_parser():

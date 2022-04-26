@@ -1,10 +1,10 @@
 import unittest
 
 from commit import Commit
-from commit_list_printer import CommitListPrinter
+from commit_history_report import CommitHistoryReport
 
 
-class CommitListPrinterTest(unittest.TestCase):
+class CommitHistoryReportTest(unittest.TestCase):
     def __init__(self, method_name: str = ...) -> None:
         super().__init__(method_name)
         self.printed = []
@@ -12,7 +12,7 @@ class CommitListPrinterTest(unittest.TestCase):
     def test(self):
         commits = [self.create_commit(), self.create_commit()]
 
-        sut = CommitListPrinter()
+        sut = CommitHistoryReport()
         sut.print_function = self.print_replacement
         sut.print(commits)
 

@@ -1,4 +1,4 @@
-class CommitListPrinter:
+class CommitHistoryReport:
 
     def __init__(self) -> None:
         self.print_function = print
