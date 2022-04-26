@@ -11,17 +11,12 @@ class CommitHistoryReportTest(unittest.TestCase):
         super().__init__(method_name)
         self.printed = []
 
-    def test_given_two_commits_when_print_then_returned_output_is_separated_by_newline(self):
+    def test_given_two_commits_when_print_then_returned_output_is_separated_by_blank_line(self):
+        # GIVEN two commits
         commit = self.create_commit()
         commits = [commit, commit]
 
-        expected = []
-        expected.append(commit.first_line)
-        expected += commit.change_lines
-        expected.append('')
-        expected.append(commit.first_line)
-        expected += commit.change_lines
-
+        # WHEN printing the commit history
         buffer = io.StringIO()
         with contextlib.redirect_stdout(buffer):
             sut = CommitHistoryReport()
@@ -31,6 +26,14 @@ class CommitHistoryReportTest(unittest.TestCase):
         # split inserts a blank line at the end, if the last line in the buffer ends with '\n'
         # remove this wrong indicator of a blank line where there is none
         actual = actual[:-1]
+
+        # THEN returned output is separated by a blank line
+        expected = []
+        expected.append(commit.first_line)
+        expected += commit.change_lines
+        expected.append('')
+        expected.append(commit.first_line)
+        expected += commit.change_lines
 
         self.assertEqual(actual, expected)
 
