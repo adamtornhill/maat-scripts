@@ -1,3 +1,5 @@
+import contextlib
+import io
 import unittest
 
 from commit import Commit
@@ -9,15 +11,28 @@ class CommitHistoryReportTest(unittest.TestCase):
         super().__init__(method_name)
         self.printed = []
 
-    def test(self):
-        commits = [self.create_commit(), self.create_commit()]
+    def test_given_two_commits_when_print_then_returned_output_is_separated_by_newline(self):
+        commit = self.create_commit()
+        commits = [commit, commit]
 
-        sut = CommitHistoryReport()
-        sut.print_function = self.print_replacement
-        sut.print(commits)
+        expected = []
+        expected.append(commit.first_line)
+        expected += commit.change_lines
+        expected.append('')
+        expected.append(commit.first_line)
+        expected += commit.change_lines
 
-        # TODO fix assert statement
-        self.assertEqual(0, 0)
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            sut = CommitHistoryReport()
+            sut.print(commits)
+        actual = buffer.getvalue().split('\n')
+
+        # split inserts a blank line at the end, if the last line in the buffer ends with '\n'
+        # remove this wrong indicator of a blank line where there is none
+        actual = actual[:-1]
+
+        self.assertEqual(actual, expected)
 
     def print_replacement(self, string=''):
         self.printed.append(string)
