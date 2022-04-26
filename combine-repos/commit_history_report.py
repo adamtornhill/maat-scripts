@@ -1,10 +1,13 @@
 class CommitHistoryReport:
 
     # TODO test boundary cases
-    # - empty commits array
     # - single commit
     # - two commits
-    def print(self, commits):
+    @staticmethod
+    def print(commits):
+        if len(commits) == 0:
+            return
+
         for commit in commits[:-1]:
             print(str(commit))
             print()

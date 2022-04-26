@@ -7,7 +7,25 @@ from commit_history_report import CommitHistoryReport
 
 
 class CommitHistoryReportTest(unittest.TestCase):
-    def test_given_two_commits_when_print_then_returned_output_is_separated_by_blank_line(self):
+    def test_given_empty_commit_list_when_print_then_output_is_empty(self):
+        # GIVEN empty commit list
+        commits = []
+
+        # WHEN printing the commit history
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            sut = CommitHistoryReport()
+            sut.print(commits)
+        actual = buffer.getvalue().split('\n')
+
+        # split inserts a blank line at the end, if the last line in the buffer ends with '\n'
+        # remove this wrong indicator of a blank line where there is none
+        actual = actual[:-1]
+
+        # THEN output is empty
+        self.assertTrue(len(actual) == 0, "print should not produce output")
+
+    def test_given_two_commits_when_print_then_output_is_separated_by_blank_line(self):
         # GIVEN two commits
         commit = self.create_commit()
         commits = [commit, commit]
@@ -23,7 +41,7 @@ class CommitHistoryReportTest(unittest.TestCase):
         # remove this wrong indicator of a blank line where there is none
         actual = actual[:-1]
 
-        # THEN returned output is separated by a blank line
+        # THEN output is separated by a blank line
         expected = []
         expected.append(commit.first_line)
         expected += commit.change_lines
