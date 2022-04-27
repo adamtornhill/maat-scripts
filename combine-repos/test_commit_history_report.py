@@ -32,16 +32,10 @@ class CommitHistoryReportTest(unittest.TestCase):
         commits = [commit, commit]
 
         # WHEN printing the commit history
-        buffer = io.StringIO()
         actual = []
-        with CaptureStdoutToList(buffer, actual):
+        with CaptureStdoutToList(actual):
             sut = CommitHistoryReport()
             sut.print(commits)
-        actual = buffer.getvalue().split('\n')
-
-        # split inserts a blank line at the end, if the last line in the buffer ends with '\n'
-        # remove this wrong indicator of a blank line where there is none
-        actual = actual[:-1]
 
         # THEN output is separated by a blank line
         expected = []
@@ -51,7 +45,7 @@ class CommitHistoryReportTest(unittest.TestCase):
         expected.append(commit.first_line)
         expected += commit.change_lines
 
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
     @staticmethod
     def create_commit():

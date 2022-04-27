@@ -1,9 +1,6 @@
-import contextlib
-import io
 import unittest
-
 import combine_repos
-
+from capture_stdout_to_list import CaptureStdoutToList
 
 class TestCase:
     def __init__(self, t, description, first_history_file, second_history_file, expected_history_file):
@@ -21,17 +18,14 @@ class TestCase:
 
         # WHEN I combine the git history files
         args = parser.parse_args(args)
-        buffer = io.StringIO()
-        with contextlib.redirect_stdout(buffer):
+        actual = []
+        with CaptureStdoutToList(actual):
             combine_repos.run(args)
 
         # THEN the combined history is printed to stdout
         # AND the combined history matches the expected file
         with open(self.expected_history_file, 'rt') as f:
             expected = f.read().splitlines()
-        expected.append('')
-
-        actual = buffer.getvalue().split('\n')
 
         self.t.assertEqual(expected, actual, self.description)
 
