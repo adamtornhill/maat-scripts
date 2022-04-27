@@ -1,10 +1,9 @@
-import contextlib
-import io
 import unittest
 
+from capture_stdout_to_list import CaptureStdoutToList
 from commit import Commit
 from commit_history_report import CommitHistoryReport
-from capture_stdout_to_list import CaptureStdoutToList
+
 
 class CommitHistoryReportTest(unittest.TestCase):
     def test_given_empty_commit_list_when_print_then_output_is_empty(self):
@@ -12,16 +11,10 @@ class CommitHistoryReportTest(unittest.TestCase):
         commits = []
 
         # WHEN printing the commit history
-        buffer = io.StringIO()
         actual = []
-        with CaptureStdoutToList(buffer, actual):
+        with CaptureStdoutToList(actual):
             sut = CommitHistoryReport()
             sut.print(commits)
-        actual = buffer.getvalue().split('\n')
-
-        # split inserts a blank line at the end, if the last line in the buffer ends with '\n'
-        # remove this wrong indicator of a blank line where there is none
-        actual = actual[:-1]
 
         # THEN output is empty
         self.assertTrue(len(actual) == 0, "print should not produce output")
