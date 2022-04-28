@@ -5,16 +5,12 @@ from commit_history_report import CommitHistoryReport
 
 
 def run(args):
-    # first_commits = CommitHistoryFile(args.first).read()
-    # second_commits = CommitHistoryFile(args.second).read()
-    # all_commits = first_commits + second_commits
-    # all_commits.sort
-    # for commit in all_commits:
-    #   print(CommitPrinter(commit).format())
     first_commits = CommitHistoryReader().read(args.first)
     second_commits = CommitHistoryReader().read(args.second)
 
     all_commits = second_commits + first_commits
+
+    all_commits.sort(key=lambda commit: commit.date, reverse=True)
 
     CommitHistoryReport().print(all_commits)
 
@@ -33,5 +29,3 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     run(args)
-
-
