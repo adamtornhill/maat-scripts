@@ -11,14 +11,20 @@ class Commit:
     @property
     def date(self):
         # TODO: test boundary cases
-        # - first_line is empty / None / too short / malformed / comment is empty and message ends after date / author is empty
+        # - first_line comment author is empty
         # Correct format of the first line:
         # [1234567] Some Name YYYY-MM-DD Some Comment
+        if self.first_line is None:
+            return None
+
         regex = '([0-9]{4}-[0-9]{2}-[0-9]{2})'
         date_search = re.search(regex, self.first_line)
-        date_str = date_search.group(1)
-        result = date.fromisoformat(date_str)
-        return result
+
+        if date_search:
+            date_str = date_search.group(1)
+            return date.fromisoformat(date_str)
+
+        return None
 
     @property
     def first_line(self):
