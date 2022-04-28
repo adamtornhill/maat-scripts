@@ -19,6 +19,24 @@ class CommitHistoryReportTest(unittest.TestCase):
         # THEN output is empty
         self.assertTrue(len(actual) == 0, "print should not produce output")
 
+    def test_given_single_commit_when_print_then_output_is_only_the_commit(self):
+        # GIVEN single commit
+        commit = self.create_commit()
+        commits = [commit]
+
+        # WHEN printing the commit history
+        actual = []
+        with CaptureStdoutToList(actual):
+            sut = CommitHistoryReport()
+            sut.print(commits)
+
+        # THEN output is only the commit
+        expected = []
+        expected.append(commit.first_line)
+        expected += commit.change_lines
+
+        self.assertEqual(expected, actual)
+
     def test_given_two_commits_when_print_then_output_is_separated_by_blank_line(self):
         # GIVEN two commits
         commit = self.create_commit()
@@ -34,7 +52,9 @@ class CommitHistoryReportTest(unittest.TestCase):
         expected = []
         expected.append(commit.first_line)
         expected += commit.change_lines
+
         expected.append('')
+
         expected.append(commit.first_line)
         expected += commit.change_lines
 
