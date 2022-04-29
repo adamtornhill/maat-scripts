@@ -4,6 +4,8 @@ from commit_history_reader import CommitHistoryReader
 from commit_history_report import CommitHistoryReport
 
 
+# TODO: Add -outfile parameter to specify the result file
+# TODO: Add documentation
 def run(args):
     first_commits = CommitHistoryReader().read(args.first)
     second_commits = CommitHistoryReader().read(args.second)
