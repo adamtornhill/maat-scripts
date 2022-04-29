@@ -23,6 +23,7 @@ def create_argument_parser():
         description=desc)
     parser.add_argument('first', help="first git history file")
     parser.add_argument('second', help="second git history file")
+    parser.add_argument('--output', required=False, type=str, help="path to a file which shall receive the result")
     return parser
 
 
