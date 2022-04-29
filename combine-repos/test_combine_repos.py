@@ -4,6 +4,7 @@ import unittest
 import combine_repos
 from capture_stdout_to_list import CaptureStdoutToList
 
+
 class TestCase:
     def __init__(self, t, description, first_history_file, second_history_file, expected_history_file):
         self.t = t

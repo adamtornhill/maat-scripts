@@ -1,12 +1,14 @@
 class CommitHistoryReport:
 
     @staticmethod
-    def print(commits):
+    def generate(commits):
         if len(commits) == 0:
-            return
+            return ''
 
+        lines = []
         for commit in commits[:-1]:
-            print(str(commit))
-            print()
+            lines.append(str(commit))
+            lines.append('')
 
-        print(str(commits[-1]))
+        lines.append(str(commits[-1]))
+        return '\n'.join(lines)

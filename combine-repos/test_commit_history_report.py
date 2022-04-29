@@ -7,48 +7,33 @@ from commit_history_report import CommitHistoryReport
 
 class CommitHistoryReportTest(unittest.TestCase):
     def test_given_empty_commit_list_when_print_then_output_is_empty(self):
-        # GIVEN empty commit list
         commits = []
 
-        # WHEN printing the commit history
-        actual = []
-        with CaptureStdoutToList(actual):
-            sut = CommitHistoryReport()
-            sut.print(commits)
+        sut = CommitHistoryReport()
+        actual = sut.generate(commits)
 
-        # THEN output is empty
         self.assertTrue(len(actual) == 0, "print should not produce output")
 
     def test_given_single_commit_when_print_then_output_is_only_the_commit(self):
-        # GIVEN single commit
         commit = self.create_commit()
         commits = [commit]
 
-        # WHEN printing the commit history
-        actual = []
-        with CaptureStdoutToList(actual):
-            sut = CommitHistoryReport()
-            sut.print(commits)
+        sut = CommitHistoryReport()
+        actual = sut.generate(commits)
 
-        # THEN output is only the commit
         expected = []
         expected.append(commit.first_line)
         expected += commit.change_lines
 
-        self.assertEqual(expected, actual)
+        self.assertEqual('\n'.join(expected), actual)
 
     def test_given_two_commits_when_print_then_output_is_separated_by_blank_line(self):
-        # GIVEN two commits
         commit = self.create_commit()
         commits = [commit, commit]
 
-        # WHEN printing the commit history
-        actual = []
-        with CaptureStdoutToList(actual):
-            sut = CommitHistoryReport()
-            sut.print(commits)
+        sut = CommitHistoryReport()
+        actual = sut.generate(commits)
 
-        # THEN output is separated by a blank line
         expected = []
         expected.append(commit.first_line)
         expected += commit.change_lines
@@ -58,7 +43,7 @@ class CommitHistoryReportTest(unittest.TestCase):
         expected.append(commit.first_line)
         expected += commit.change_lines
 
-        self.assertEqual(expected, actual)
+        self.assertEqual('\n'.join(expected), actual)
 
     @staticmethod
     def create_commit():

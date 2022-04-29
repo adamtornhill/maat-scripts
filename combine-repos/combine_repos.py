@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 import argparse
-from contextlib import redirect_stdout
 
 from commit_history_reader import CommitHistoryReader
 from commit_history_report import CommitHistoryReport
 
 
-# TODO: Add -outfile parameter to specify the result file
 # TODO: Add documentation
 def run(args):
     first_commits = CommitHistoryReader().read(args.first)
@@ -16,12 +14,17 @@ def run(args):
 
     all_commits.sort(key=lambda commit: commit.date, reverse=True)
 
-    if args.output is not None:
-        with open(args.output, 'w') as f:
-            with redirect_stdout(f):
-                CommitHistoryReport().print(all_commits)
-    else:
-        CommitHistoryReport().print(all_commits)
+    report = CommitHistoryReport().generate(all_commits)
+    print_report(args.output, report)
+
+
+def print_report(outfile, report):
+    if report != '':
+        if outfile is not None:
+            with open(outfile, 'w') as f:
+                f.write(report)
+        else:
+            print(report)
 
 
 def create_argument_parser():
