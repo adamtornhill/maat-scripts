@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import argparse
+from contextlib import redirect_stdout
+
 from commit_history_reader import CommitHistoryReader
 from commit_history_report import CommitHistoryReport
 
@@ -14,7 +16,12 @@ def run(args):
 
     all_commits.sort(key=lambda commit: commit.date, reverse=True)
 
-    CommitHistoryReport().print(all_commits)
+    if args.output is not None:
+        with open(args.output, 'w') as f:
+            with redirect_stdout(f):
+                CommitHistoryReport().print(all_commits)
+    else:
+        CommitHistoryReport().print(all_commits)
 
 
 def create_argument_parser():
@@ -23,7 +30,7 @@ def create_argument_parser():
         description=desc)
     parser.add_argument('first', help="first git history file")
     parser.add_argument('second', help="second git history file")
-    parser.add_argument('--output', required=False, type=str, help="path to a file which shall receive the result")
+    parser.add_argument('--output', type=str, help="path to a file which shall receive the result")
     return parser
 
 
