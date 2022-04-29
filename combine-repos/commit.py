@@ -10,8 +10,6 @@ class Commit:
 
     @property
     def date(self):
-        # TODO: test boundary cases
-        # - first_line comment author is empty
         # Correct format of the first line:
         # [1234567] Some Name YYYY-MM-DD Some Comment
         if self.first_line is None:
