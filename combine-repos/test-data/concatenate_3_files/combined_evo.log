@@ -1,0 +1,16 @@
+[7ad7fee] Adam Petersen 2014-08-02 Scripts to analyze omplexity trends
+31	0	miner/desc_stats.py
+131	0	miner/git_complexity_diff.py
+92	0	miner/git_complexity_trend.py
+41	0	miner/git_interactions.py
+4	21	miner/git_proximity_analysis.py
+2	25	miner/proximity.py
+
+[78c4881] Adam Petersen 2014-06-28 Prototype for proximity analysis (git)
+114	0	miner/git_proximity_analysis.py
+32	0	miner/proximity.py
+
+[5062643] Adam Petersen Tornhill 2014-06-13 Initial commit
+54	0	.gitignore
+674	0	LICENSE
+4	0	README.md

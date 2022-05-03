@@ -1,6 +1,7 @@
 import os
 import tempfile
 import unittest
+
 import combine_repos
 from capture_stdout_to_list import CaptureStdoutToList
 
@@ -35,9 +36,20 @@ class TestCase:
 class CombineReposTest(unittest.TestCase):
     def test_suite(self):
         suite = [
-            TestCase(self, "1 commit per file => simply concatenate the files",
-                     ["test-data/concatenate/first_evo.log", "test-data/concatenate/second_evo.log"],
-                     "test-data/concatenate/combined_evo.log"),
+            TestCase(self, "2 input files with 1 commit per file => simply concatenate the files",
+                     [
+                         "test-data/concatenate_2_files/first_evo.log",
+                         "test-data/concatenate_2_files/second_evo.log",
+                     ],
+                     "test-data/concatenate_2_files/combined_evo.log"),
+
+            TestCase(self, "3 input files with 1 commit per file => simply concatenate the files",
+                     [
+                         "test-data/concatenate_3_files/first_evo.log",
+                         "test-data/concatenate_3_files/second_evo.log",
+                         "test-data/concatenate_3_files/third_evo.log"
+                     ],
+                     "test-data/concatenate_3_files/combined_evo.log"),
 
             TestCase(self, "multiple commits per file => result is sorted by date descending",
                      ["test-data/sort/first_evo.log", "test-data/sort/second_evo.log"],
@@ -56,7 +68,7 @@ class CombineReposTest(unittest.TestCase):
             outfilepath = os.path.join(tempdirname, "combined_evo.log")
 
             # GIVEN I have two git history files
-            args = ["test-data/concatenate/first_evo.log", "test-data/concatenate/second_evo.log"]
+            args = ["test-data/concatenate_2_files/first_evo.log", "test-data/concatenate_2_files/second_evo.log"]
 
             # AND I specify an outfile
             args += ["--output", outfilepath]
