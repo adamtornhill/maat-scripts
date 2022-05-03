@@ -43,14 +43,13 @@ class CombineReposTest(unittest.TestCase):
                      ],
                      "test-data/concatenate_2_files/combined_evo.log"),
 
-            # TODO Re-activate 3 input files test case
-            # TestCase(self, "3 input files with 1 commit per file => simply concatenate the files",
-            #          [
-            #              "test-data/concatenate_3_files/first_evo.log",
-            #              "test-data/concatenate_3_files/second_evo.log",
-            #              "test-data/concatenate_3_files/third_evo.log"
-            #          ],
-            #          "test-data/concatenate_3_files/combined_evo.log"),
+            TestCase(self, "3 input files with 1 commit per file => simply concatenate the files",
+                     [
+                         "test-data/concatenate_3_files/first_evo.log",
+                         "test-data/concatenate_3_files/second_evo.log",
+                         "test-data/concatenate_3_files/third_evo.log"
+                     ],
+                     "test-data/concatenate_3_files/combined_evo.log"),
 
             TestCase(self, "multiple commits per file => result is sorted by date descending",
                      ["test-data/sort/first_evo.log", "test-data/sort/second_evo.log"],

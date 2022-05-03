@@ -7,10 +7,11 @@ from commit_history_report import CommitHistoryReport
 
 # TODO: Add documentation
 def run(args):
-    first_commits = CommitHistoryReader().read(args.first)
-    second_commits = CommitHistoryReader().read(args.second)
-
-    all_commits = second_commits + first_commits
+    input_files = [args.first, args.second] + args.other
+    all_commits = []
+    for input_file in input_files:
+        commits = CommitHistoryReader().read(input_file)
+        all_commits += commits
 
     all_commits.sort(key=lambda commit: commit.date, reverse=True)
 
@@ -33,6 +34,7 @@ def create_argument_parser():
         description=desc)
     parser.add_argument('first', help="first git history file")
     parser.add_argument('second', help="second git history file")
+    parser.add_argument('other', nargs='*', help="optional list of additional git history files")
     parser.add_argument('--output', type=str, help="path to a file which shall receive the result")
     return parser
 
