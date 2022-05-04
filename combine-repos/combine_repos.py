@@ -8,12 +8,14 @@ from commit_history_report import CommitHistoryReport
 
 # TODO: Add documentation
 def print_report(outfile, report):
-    if report != '':
-        if outfile is not None:
-            with open(outfile, 'w') as f:
-                f.write(report)
-        else:
-            print(report)
+    if report == '':
+        return
+
+    if outfile is not None:
+        with open(outfile, 'w') as f:
+            f.write(report)
+    else:
+        print(report)
 
 
 def run(args):
