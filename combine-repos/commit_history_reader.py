@@ -2,6 +2,11 @@ from commit import Commit
 
 
 class CommitHistoryReader:
+    def read(self, path):
+        with open(path) as f:
+            contents = f.read()
+        return self.parse(contents)
+
     def parse(self, contents):
         if contents == '':
             return []
@@ -14,12 +19,8 @@ class CommitHistoryReader:
 
         return commits
 
-    def read(self, path):
-        with open(path) as f:
-            contents = f.read()
-        return self.parse(contents)
-
-    def __group_lines_by_commit(self, lines):
+    @staticmethod
+    def __group_lines_by_commit(lines):
         """Group lines into "commit_groups" which are not separated by a blank line.
         Every commit is a group of lines.
         Two commits are separated by a blank line.
@@ -42,7 +43,8 @@ class CommitHistoryReader:
 
         return commit_groups
 
-    def __convert_commit_groups_to_commits(self, commit_groups):
+    @staticmethod
+    def __convert_commit_groups_to_commits(commit_groups):
         commits = []
         for commit_group in commit_groups:
             commit = Commit()
