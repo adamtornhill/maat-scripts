@@ -6,7 +6,6 @@ from commit_history_reader import CommitHistoryReader
 from commit_history_report import CommitHistoryReport
 
 
-# TODO: Add documentation
 def print_report(outfile, report):
     if report == '':
         return
@@ -31,7 +30,8 @@ def run(args):
 
 
 def create_argument_parser():
-    desc = "Combines two git history files into one."
+    desc = """Combine a number of git history files into a single git history file.
+              The program sorts the aggregated commits by date in descending order before writing the result."""
     parser = argparse.ArgumentParser(
         description=desc)
     parser.add_argument('first', help="first git history file")
