@@ -1,24 +1,12 @@
 #!/usr/bin/env python3
 import argparse
+from pipe import *
 
 from commit_history_reader import CommitHistoryReader
 from commit_history_report import CommitHistoryReport
 
 
 # TODO: Add documentation
-def run(args):
-    input_files = [args.first, args.second] + args.other
-    all_commits = []
-    for input_file in input_files:
-        commits = CommitHistoryReader().read(input_file)
-        all_commits += commits
-
-    all_commits.sort(key=lambda commit: commit.date, reverse=True)
-
-    report = CommitHistoryReport().generate(all_commits)
-    print_report(args.output, report)
-
-
 def print_report(outfile, report):
     if report != '':
         if outfile is not None:
@@ -26,6 +14,18 @@ def print_report(outfile, report):
                 f.write(report)
         else:
             print(report)
+
+
+def run(args):
+    input_files = [args.first, args.second] + args.other
+
+    all_commits = list(input_files
+                       | map(lambda file: CommitHistoryReader().read(file))
+                       | traverse
+                       | sort(key=lambda commit: commit.date, reverse=True))
+
+    report = CommitHistoryReport().generate(all_commits)
+    print_report(args.output, report)
 
 
 def create_argument_parser():
