@@ -1,6 +1,5 @@
 import unittest
 
-from capture_stdout_to_list import CaptureStdoutToList
 from commit import Commit
 from commit_history_report import CommitHistoryReport
 
@@ -21,10 +20,7 @@ class CommitHistoryReportTest(unittest.TestCase):
         sut = CommitHistoryReport()
         actual = sut.generate(commits)
 
-        expected = []
-        expected.append(commit.first_line)
-        expected += commit.change_lines
-
+        expected = [commit.first_line] + commit.change_lines
         self.assertEqual('\n'.join(expected), actual)
 
     def test_given_two_commits_when_print_then_output_is_separated_by_blank_line(self):
@@ -34,9 +30,7 @@ class CommitHistoryReportTest(unittest.TestCase):
         sut = CommitHistoryReport()
         actual = sut.generate(commits)
 
-        expected = []
-        expected.append(commit.first_line)
-        expected += commit.change_lines
+        expected = [commit.first_line] + commit.change_lines
 
         expected.append('')
 

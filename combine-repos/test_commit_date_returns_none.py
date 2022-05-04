@@ -1,8 +1,8 @@
 import unittest
+
 import ddt
 
 from commit import Commit
-from datetime import date
 
 
 @ddt.ddt

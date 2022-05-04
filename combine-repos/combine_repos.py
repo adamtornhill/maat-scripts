@@ -32,13 +32,12 @@ def run(args):
 def create_argument_parser():
     desc = """Combine a number of git history files into a single git history file.
               The program sorts the aggregated commits by date in descending order before writing the result."""
-    parser = argparse.ArgumentParser(
-        description=desc)
-    parser.add_argument('first', help="first git history file")
-    parser.add_argument('second', help="second git history file")
-    parser.add_argument('other', nargs='*', help="optional list of additional git history files")
-    parser.add_argument('--output', type=str, help="path to a file which shall receive the result")
-    return parser
+    result = argparse.ArgumentParser(description=desc)
+    result.add_argument('first', help="first git history file")
+    result.add_argument('second', help="second git history file")
+    result.add_argument('other', nargs='*', help="optional list of additional git history files")
+    result.add_argument('--output', type=str, help="path to a file which shall receive the result")
+    return result
 
 
 if __name__ == "__main__":
