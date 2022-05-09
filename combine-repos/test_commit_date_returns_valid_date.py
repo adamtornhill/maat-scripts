@@ -6,7 +6,7 @@ from datetime import date
 
 
 @ddt.ddt
-class CommitHistoryReaderDateReturnsValidDateTest(unittest.TestCase):
+class CommitDateReturnsValidDateTest(unittest.TestCase):
     def setUp(self):
         self.commit = Commit()
 

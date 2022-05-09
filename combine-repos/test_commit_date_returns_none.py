@@ -6,7 +6,7 @@ from commit import Commit
 
 
 @ddt.ddt
-class CommitHistoryReaderDateReturnsNoneTest(unittest.TestCase):
+class CommitDateReturnsNoneTest(unittest.TestCase):
     def setUp(self):
         self.commit = Commit()
 
