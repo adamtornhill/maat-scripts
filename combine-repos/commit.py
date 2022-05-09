@@ -61,4 +61,7 @@ class Commit:
         return representation
 
     def __str__(self) -> str:
-        return self.first_line + '\n' + '\n'.join(self.change_lines)
+        result = self.first_line
+        if len(self.change_lines) > 0:
+            result += '\n' + '\n'.join(self.change_lines)
+        return  result

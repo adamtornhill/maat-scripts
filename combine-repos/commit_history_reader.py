@@ -31,9 +31,26 @@ class CommitHistoryReader:
         commit_groups = []
         current_commit_group = []
         for line in lines:
-            if line != '':
+            if len(current_commit_group) == 0:
+                # This is the first line of the file or after the previous commit group has been closed.
+                # This line is (usually) not empty but the header of the next commit.
                 current_commit_group.append(line)
+
+            elif line != '' and line[0] != '[':
+                # This is the "numstat" line for a file modified in the commit.
+                current_commit_group.append(line)
+
+            elif line != '' and line[0] == '[':
+                # The opening bracket shows that this is a new commit.
+                # Having no blank line between this commit and the previous commit
+                # shows that the previous commit was a merge commit.
+                # This implies that the previous commit should not have any file modifications.
+                commit_groups.append(current_commit_group)
+                current_commit_group = [line]
+
             else:
+                # This is a blank line.
+                # Blank lines separate an ordinary commit from the next commit.
                 commit_groups.append(current_commit_group)
                 current_commit_group = []
 
