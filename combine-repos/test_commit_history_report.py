@@ -39,6 +39,25 @@ class CommitHistoryReportTest(unittest.TestCase):
 
         self.assertEqual('\n'.join(expected), actual)
 
+    def test_given_merge_commit_and_ordinary_commit_when_print_then_no_blank_line_between_commits(self):
+        merge_commit = Commit()
+        merge_commit.first_line = "[1234567] Some Author 2022-04-26 This is a merge commit"
+        merge_commit.change_lines = []
+
+        ordinary_commit = self.create_commit()
+
+        commits = [merge_commit, ordinary_commit]
+
+        sut = CommitHistoryReport()
+        actual = sut.generate(commits)
+
+        expected = [merge_commit.first_line]
+
+        expected.append(ordinary_commit.first_line)
+        expected += ordinary_commit.change_lines
+
+        self.assertEqual('\n'.join(expected), actual)
+
     @staticmethod
     def create_commit():
         result = Commit()
