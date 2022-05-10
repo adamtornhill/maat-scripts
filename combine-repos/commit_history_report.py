@@ -9,10 +9,7 @@ class CommitHistoryReport:
         for commit in commits[:-1]:
             lines.append(str(commit))
 
-            # Only insert the blank line, if the current commit is not a merge commit
-            # merge commits can be recognized by not having the numstat entry - i.e. the change records in
-            # the change_lines property
-            if len(commit.change_lines) > 0:
+            if not commit.is_merge:
                 lines.append('')
 
         lines.append(str(commits[-1]))

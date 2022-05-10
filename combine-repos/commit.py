@@ -48,6 +48,12 @@ class Commit:
     def change_lines(self):
         del self._change_lines
 
+    @property
+    def is_merge(self):
+        # merge commits can be recognized by not having the numstat entry,
+        # i.e. the change records in the change_lines property are empty
+        return len(self.change_lines) == 0
+
     def __eq__(self, other):
         if not isinstance(other, Commit):
             return False
@@ -62,6 +68,8 @@ class Commit:
 
     def __str__(self) -> str:
         result = self.first_line
-        if len(self.change_lines) > 0:
+
+        if not self.is_merge:
             result += '\n' + '\n'.join(self.change_lines)
+
         return  result
