@@ -53,7 +53,11 @@ class CombineReposTest(unittest.TestCase):
 
             TestCase(self, "multiple commits per file => result is sorted by date descending",
                      ["test-data/sort/first_evo.log", "test-data/sort/second_evo.log"],
-                     "test-data/sort/combined_evo.log")
+                     "test-data/sort/combined_evo.log"),
+
+            TestCase(self, "merge commits and ordinary commits => sorting rearranges both commit types",
+                     ["test-data/merge-commits/first_evo.log", "test-data/merge-commits/second_evo.log"],
+                     "test-data/merge-commits/combined_evo.log")
         ]
 
         self.maxDiff = None
