@@ -1,0 +1,52 @@
+[163844df] HospitalRun Bot 2020-03-07 Merge branch 'master' into dependabot/npm_and_yarn/react-bootstrap-typeahead-4.0.0
+[1b3ea025] First User 2020-03-07 Merge pull request #1883 from seconduser/master
+[0c87e13] HospitalRun Bot 2020-03-07 Merge branch 'master' into feature/table
+[b107a9e] dependabot-preview[bot] 2020-03-07 Merge pull request #316 from HospitalRun/dependabot/npm_and_yarn/react-datepicker-2.14.0
+[e7e9fab] dependabot-preview[bot] 2020-03-07 chore(deps): bump react-datepicker from 2.13.0 to 2.14.0
+1	1	components/package.json
+
+[a4e7e32] Stefano Casasola 2020-03-07 Merge branch 'master' into feature/table
+[62e691a] Stefano Casasola 2020-03-07 refactor(table): adds typings, code cleaning
+10	9	components/src/components/Table/Table.tsx
+29	58	components/src/components/Table/helper.tsx
+32	70	components/src/components/Table/interfaces.ts
+3	94	components/stories/table.stories.tsx
+
+[0aed460] Matteo Vivona 2020-03-07 Merge pull request #315 from HospitalRun/dependabot/npm_and_yarn/react-docgen-typescript-loader-3.7.0
+[54cf397] dependabot-preview[bot] 2020-03-07 chore(deps-dev): bump react-docgen-typescript-loader from 3.6.0 to 3.7.0
+1	1	components/package.json
+
+[d7a36ab2] HospitalRun Bot 2020-03-06 Merge branch 'master' into dependabot/npm_and_yarn/react-bootstrap-typeahead-4.0.0
+[60f8f10e] HospitalRun Bot 2020-03-06 Merge branch 'master' into master
+[3da7a9d2] dependabot-preview[bot] 2020-03-06 Merge pull request #1885 from HospitalRun/dependabot/npm_and_yarn/types/node-13.9.0
+[0ffecd1f] dependabot-preview[bot] 2020-03-06 chore(deps-dev): bump @types/node from 13.7.7 to 13.9.0
+1	1	frontend/package.json
+
+[ac67697b] HospitalRun Bot 2020-03-06 Merge branch 'master' into dependabot/npm_and_yarn/react-bootstrap-typeahead-4.0.0
+[c7a53adf] HospitalRun Bot 2020-03-06 Merge branch 'master' into master
+[5eeef892] Third User 2020-03-06 test(eslintrc): remove createDefaultProgram and update jest config
+3	4	frontend/.eslintrc.js
+2	1	frontend/jest.config.js
+1	1	frontend/package.json
+
+[fe408de7] HospitalRun Bot 2020-03-06 Merge branch 'master' into master
+[408451de] HospitalRun Bot 2020-03-06 Merge branch 'master' into dependabot/npm_and_yarn/react-bootstrap-typeahead-4.0.0
+[49e6098b] dependabot-preview[bot] 2020-03-06 Merge pull request #1884 from HospitalRun/dependabot/npm_and_yarn/hospitalrun/components-0.35.0
+[329f0c81] dependabot-preview[bot] 2020-03-06 chore(deps): bump @hospitalrun/components from 0.34.1 to 0.35.0
+1	1	frontend/package.json
+
+[168a1128] seconduser 2020-03-06 feat: making sidebar collapsible
+7	1	frontend/src/HospitalRun.tsx
+15	0	frontend/src/__tests__/HospitalRun.test.tsx
+20	10	frontend/src/__tests__/components/Sidebar.test.tsx
+23	4	frontend/src/components/Sidebar.tsx
+28	0	frontend/src/components/component-slice.ts
+1	1	frontend/src/index.css
+2	0	frontend/src/store/index.ts
+
+[8027f17] Matteo Vivona 2020-03-06 Merge branch 'master' into feature/table
+[57158fd] Matteo Vivona 2020-03-06 Merge pull request #309 from HospitalRun/dependabot/npm_and_yarn/react-bootstrap-typeahead-4.0.0
+[3d7649f] Stefano Casasola 2020-03-06 test(table): adds more table tests
+24	4	components/src/components/Table/Table.tsx
+91	0	components/stories/table.stories.tsx
+270	13	components/test/table.test.tsx
