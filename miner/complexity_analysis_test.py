@@ -26,10 +26,10 @@ class ComplexityAnalysisTest(unittest.TestCase):
 
     def assertContainsCsvData(self, buffer):
         # Sample data:
-        # n, total, mean, sd, max
-        # 26, 40.0, 1.54, 1.22, 4.0
+        # n,total,mean,sd,max
+        # 26,40.0,1.54,1.22,4.0
         expected_regex = re.compile(
-            '^n, total, mean, sd, max$\n^[0-9]+,[0-9.]+,[0-9.]+,[0-9.]+,[0-9.]+$',
+            '^n,total,mean,sd,max$\n^[0-9]+,[0-9.]+,[0-9.]+,[0-9.]+,[0-9.]+$',
             flags=re.MULTILINE)
         self.assertRegex(buffer.getvalue(), expected_regex, 'complexity_analysis.run() should print csv data')
 
