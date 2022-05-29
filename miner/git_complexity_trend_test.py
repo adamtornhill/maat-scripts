@@ -48,7 +48,7 @@ class GitComplexityTrendTest(unittest.TestCase):
         parser.add_argument('--end')
         parser.add_argument('--file')
 
-        args = list(["--start", "f50795c2", "--end", "887dfea", "--file", "./test-data/iso8859-1-encoded-test-file-with-umlauts.txt"])
+        args = list(["--start", "f50795c2", "--end", "f39cd09", "--file", "./test-data/iso8859-1-encoded-test-file-with-umlauts.txt"])
         args = parser.parse_args(args)
 
         buffer = io.StringIO()
