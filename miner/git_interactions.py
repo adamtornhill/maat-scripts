@@ -13,7 +13,7 @@ def _run_git_cmd(git_arguments):
         encoding = sys.stdout.encoding
 
     stdout_bytes = subprocess.Popen(git_arguments, stdout=subprocess.PIPE).communicate()[0]
-    stdout = stdout_bytes.decode(encoding)
+    stdout = stdout_bytes.decode(encoding=encoding, errors="replace")
     return stdout
 
 

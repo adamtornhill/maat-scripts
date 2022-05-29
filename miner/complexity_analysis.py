@@ -37,7 +37,7 @@ def as_csv(stats):
 
 
 def run(args):
-    with open(args.file, "r") as file_to_calc:
+    with open(file=args.file, mode="r", errors="replace") as file_to_calc:
         preprocessor = language_preprocessors.create_for(args.file)
         complexity_by_line = complexity_calculations.calculate_complexity_in(
             file_to_calc.read(), preprocessor)

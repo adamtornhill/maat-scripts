@@ -1,3 +1,4 @@
+import re
 import unittest
 import argparse
 import io
@@ -40,6 +41,34 @@ class GitComplexityTrendTest(unittest.TestCase):
                     '']
         actual = buffer.getvalue().split("\n")
         self.assertEqual(expected, actual)
+
+    def test_git_complexity_trend_should_process_non_utf8_encoded_files(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--start')
+        parser.add_argument('--end')
+        parser.add_argument('--file')
+
+        args = list(["--start", "f50795c2", "--end", "f39cd09", "--file", "./test-data/iso8859-1-encoded-test-file-with-umlauts.txt"])
+        args = parser.parse_args(args)
+
+        buffer = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(buffer):
+                git_complexity_trend.run(args)
+        except:
+            self.fail('git_complexity_trend.run fails for iso-8859-1 encoded files')
+
+        self.assertContainsCsvData(buffer)
+
+    def assertContainsCsvData(self, buffer):
+        # Sample data:
+        # rev,n,total,mean,sd
+        # 7aef5de,52,102.0,1.96,1.13
+        # 839c8d1,52,101.0,1.94,1.12
+        expected_regex = re.compile(
+            '^rev,n,total,mean,sd$\n^[0-9a-f]{7},[0-9]+,[0-9.]+,[0-9.]+,[0-9.]+$',
+            flags=re.MULTILINE)
+        self.assertRegex(buffer.getvalue(), expected_regex, 'git_complexity_trend.run() should print csv data')
 
 
 if __name__ == '__main__':
